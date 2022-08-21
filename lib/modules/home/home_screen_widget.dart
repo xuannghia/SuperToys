@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:super_toys/modules/app/app_preferences_provider.dart';
+import 'package:super_toys/modules/base64/base64_screen_widget.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 import 'package:super_toys/modules/home/sidebar_widget.dart';
 
@@ -22,10 +22,6 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final themeMode =
-        ref.watch(appPreferencesProvider.select((_) => _.themeMode));
-    final setThemeMode = ref.read(appPreferencesProvider).setThemeMode;
-
     return Scaffold(
       body: Row(
         children: [
@@ -54,25 +50,15 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
           Expanded(
             child: Container(
               alignment: Alignment.center,
-              child: Container(
-                alignment: Alignment.center,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('$themeMode'),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (themeMode == ThemeMode.dark) {
-                          setThemeMode(ThemeMode.light);
-                        } else {
-                          setThemeMode(ThemeMode.dark);
-                        }
-                      },
-                      child: const Text('Change theme'),
-                    )
-                  ],
-                ),
-              ),
+              child: Builder(builder: (ctx) {
+                switch (_activeSidebar) {
+                  case SidebarType.base64:
+                    return const Base64Screen();
+                  default:
+                    return Text('404',
+                        style: Theme.of(context).textTheme.headline3);
+                }
+              }),
             ),
           )
         ],
