@@ -31,7 +31,7 @@ class Base64ScreenState extends ConsumerState<Base64Screen> {
     }, [output]);
 
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

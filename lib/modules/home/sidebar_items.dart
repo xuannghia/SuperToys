@@ -23,7 +23,7 @@ List<SidebarItem> sidebarItems = [
     title: 'Base64 String Encode/Decode',
     leading: const Icon(
       Icons.code,
-      size: 24,
+      size: 16,
     ),
   ),
   SidebarItem(
@@ -31,7 +31,7 @@ List<SidebarItem> sidebarItems = [
     title: 'JWT Debugger',
     leading: const Icon(
       Icons.code,
-      size: 24,
+      size: 16,
     ),
   ),
 ];

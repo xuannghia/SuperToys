@@ -4,7 +4,7 @@ ThemeData lightTheme = ThemeData(
   primarySwatch: Colors.blue,
   splashFactory: NoSplash.splashFactory,
   scaffoldBackgroundColor: Colors.white,
-  backgroundColor: Colors.white,
+  backgroundColor: Colors.grey.shade50,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       splashFactory: NoSplash.splashFactory,

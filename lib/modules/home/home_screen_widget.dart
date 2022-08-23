@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:super_toys/modules/app/app_preferences_provider.dart';
 import 'package:super_toys/modules/base64/base64_screen_widget.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 import 'package:super_toys/modules/home/sidebar_widget.dart';
@@ -22,11 +24,14 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ThemeMode themeMode =
+        ref.watch(appPreferencesProvider.select((_) => _.themeMode));
     return Scaffold(
       body: Row(
         children: [
           Container(
             padding: const EdgeInsets.all(8),
+            color: Theme.of(context).backgroundColor,
             width: 280,
             child: Column(
               children: [
@@ -43,7 +48,26 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                     active: _activeSidebar,
                     onTap: _onTap,
                   ),
-                )
+                ),
+                Container(
+                  alignment: Alignment.centerLeft,
+                  child: Transform.scale(
+                    scale: 0.6,
+                    child: CupertinoSwitch(
+                        value: themeMode == ThemeMode.dark,
+                        onChanged: (value) {
+                          if (value) {
+                            ref
+                                .read(appPreferencesProvider)
+                                .setThemeMode(ThemeMode.dark);
+                          } else {
+                            ref
+                                .read(appPreferencesProvider)
+                                .setThemeMode(ThemeMode.light);
+                          }
+                        }),
+                  ),
+                ),
               ],
             ),
           ),
