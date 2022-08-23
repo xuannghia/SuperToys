@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:super_toys/modules/home/home_screen.dart';
+import 'package:super_toys/modules/home/home_screen_widget.dart';
 
 class Routers {
   static String home = '/';

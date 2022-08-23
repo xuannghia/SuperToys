@@ -3,6 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:super_toys/configs/routers.dart';
+import 'package:super_toys/configs/themes/dark_theme.dart';
+import 'package:super_toys/configs/themes/light_theme.dart';
 import 'package:super_toys/modules/app/app_preferences_keys.dart';
 import 'package:super_toys/modules/app/app_preferences_provider.dart';
 
@@ -35,13 +37,8 @@ class SuperToysAppState extends ConsumerState<SuperToysApp> {
       routerDelegate: _router.routerDelegate,
       title: 'Super Toys',
       themeMode: themeMode,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        primarySwatch: Colors.blue,
-      ),
+      theme: lightTheme,
+      darkTheme: darkTheme,
     );
   }
 }
