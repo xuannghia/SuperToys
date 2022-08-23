@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:super_toys/configs/themes/custom_colors.dart';
 
 ThemeData darkTheme = ThemeData(
   brightness: Brightness.dark,
-  primarySwatch: Colors.blue,
+  primaryColor: CustomColors.sky,
+  primarySwatch: CustomColors.sky,
   backgroundColor: Colors.black12,
   splashFactory: NoSplash.splashFactory,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      elevation: 0,
+      splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      elevation: 0,
       splashFactory: NoSplash.splashFactory,
     ),
   ),
@@ -22,4 +38,5 @@ ThemeData darkTheme = ThemeData(
     filled: true,
     fillColor: Colors.black12,
   ),
+  radioTheme: const RadioThemeData(splashRadius: 0),
 );

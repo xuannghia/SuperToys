@@ -5,6 +5,7 @@ import 'package:super_toys/modules/app/app_preferences_provider.dart';
 import 'package:super_toys/modules/base64/base64_screen_widget.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 import 'package:super_toys/modules/home/sidebar_widget.dart';
+import 'package:super_toys/widgets/custom_switch.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -51,21 +52,27 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 Container(
                   alignment: Alignment.centerLeft,
-                  child: Transform.scale(
-                    scale: 0.6,
-                    child: CupertinoSwitch(
-                        value: themeMode == ThemeMode.dark,
-                        onChanged: (value) {
-                          if (value) {
-                            ref
-                                .read(appPreferencesProvider)
-                                .setThemeMode(ThemeMode.dark);
-                          } else {
-                            ref
-                                .read(appPreferencesProvider)
-                                .setThemeMode(ThemeMode.light);
-                          }
-                        }),
+                  child: DropdownButton(
+                    value: themeMode,
+                    items: const [
+                      DropdownMenuItem(
+                        value: ThemeMode.system,
+                        child: Text('System'),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.light,
+                        child: Text('Light'),
+                      ),
+                      DropdownMenuItem(
+                        value: ThemeMode.dark,
+                        child: Text('Dark'),
+                      ),
+                    ],
+                    onChanged: (ThemeMode? mode) {
+                      if (mode != null) {
+                        ref.read(appPreferencesProvider).setThemeMode(mode);
+                      }
+                    },
                   ),
                 ),
               ],

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:super_toys/modules/app/app_preferences_provider.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 
 class Sidebar extends HookConsumerWidget {
@@ -14,14 +13,11 @@ class Sidebar extends HookConsumerWidget {
     final ctrl =
         useAnimationController(duration: const Duration(milliseconds: 200));
 
-    ThemeMode themeMode =
-        ref.watch(appPreferencesProvider.select((_) => _.themeMode));
-
     useEffect(() {
       ctrl.reset();
       ctrl.forward();
       return () {};
-    }, [themeMode]);
+    }, [Theme.of(context).brightness]);
 
     return AnimatedBuilder(
       animation:
@@ -38,7 +34,9 @@ class Sidebar extends HookConsumerWidget {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                      color: isActive ? Colors.blue : Colors.transparent,
+                      color: isActive
+                          ? Theme.of(context).primaryColor
+                          : Colors.transparent,
                       borderRadius: const BorderRadius.all(Radius.circular(4)),
                     ),
                     width: 4,
@@ -54,7 +52,7 @@ class Sidebar extends HookConsumerWidget {
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(6),
                           color: isActive
-                              ? ThemeMode.dark == themeMode
+                              ? Brightness.dark == Theme.of(context).brightness
                                   ? Colors.grey.shade800.withOpacity(ctrl.value)
                                   : Colors.grey.shade200.withOpacity(ctrl.value)
                               : Colors.transparent,
@@ -77,28 +75,6 @@ class Sidebar extends HookConsumerWidget {
                       onTap: () => onTap?.call(item),
                     ),
                   ),
-                  // Expanded(
-                  //   child: ListTile(
-                  //     shape: const RoundedRectangleBorder(
-                  //         borderRadius: BorderRadius.all(Radius.circular(4))),
-                  //     dense: true,
-                  //     tileColor: isActive
-                  //         ? ThemeMode.dark == themeMode
-                  //             ? Colors.grey.shade800.withOpacity(ctrl.value)
-                  //             : Colors.grey.shade200.withOpacity(ctrl.value)
-                  //         : Colors.transparent,
-                  //     selectedColor: Colors.red,
-                  //     selectedTileColor: Colors.red,
-                  //     horizontalTitleGap: 0,
-                  //     leading: item.leading,
-                  //     title: Text(
-                  //       item.title,
-                  //     ),
-                  //     contentPadding:
-                  //         const EdgeInsets.symmetric(horizontal: 12),
-                  //     onTap: () => onTap?.call(item),
-                  //   ),
-                  // )
                 ],
               );
             },

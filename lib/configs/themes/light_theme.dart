@@ -1,13 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:super_toys/configs/themes/custom_colors.dart';
 
 ThemeData lightTheme = ThemeData(
-  primarySwatch: Colors.blue,
+  primaryColor: CustomColors.sky,
+  primarySwatch: CustomColors.sky,
   splashFactory: NoSplash.splashFactory,
   scaffoldBackgroundColor: Colors.white,
   backgroundColor: Colors.grey.shade50,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
+        elevation: 0,
+        shadowColor: Colors.transparent,
+        splashFactory: NoSplash.splashFactory,
+        shape: RoundedRectangleBorder(
+          side: BorderSide(color: CustomColors.sky.shade600, width: 0.5),
+          borderRadius: BorderRadius.circular(4),
+        )),
+  ),
+  textButtonTheme: TextButtonThemeData(
+    style: TextButton.styleFrom(
+      elevation: 0,
       splashFactory: NoSplash.splashFactory,
+    ),
+  ),
+  outlinedButtonTheme: OutlinedButtonThemeData(
+    style: OutlinedButton.styleFrom(
+      elevation: 0,
+      splashFactory: NoSplash.splashFactory,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
     ),
   ),
   inputDecorationTheme: InputDecorationTheme(
@@ -22,4 +44,5 @@ ThemeData lightTheme = ThemeData(
     filled: true,
     fillColor: Colors.grey.shade100,
   ),
+  radioTheme: const RadioThemeData(splashRadius: 0),
 );
