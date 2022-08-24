@@ -29,8 +29,8 @@ ThemeData darkTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     border: const OutlineInputBorder(),
     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blueAccent, width: 2)),
+    focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: CustomColors.sky.shade500, width: 2)),
     enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey.shade800, width: 1)),
     errorBorder: const OutlineInputBorder(
@@ -38,5 +38,9 @@ ThemeData darkTheme = ThemeData(
     filled: true,
     fillColor: Colors.black12,
   ),
-  radioTheme: const RadioThemeData(splashRadius: 0),
+  radioTheme: RadioThemeData(
+    splashRadius: 0,
+    fillColor: MaterialStateProperty.resolveWith(
+        (states) => CustomColors.sky.shade600),
+  ),
 );

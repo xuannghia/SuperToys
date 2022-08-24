@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CustomSwitch extends StatelessWidget {
+class SmallSwitch extends StatelessWidget {
   final Color? activeColor;
   final bool value;
   final void Function(bool) onChanged;
-  const CustomSwitch({
+  const SmallSwitch({
     super.key,
     required this.value,
     required this.onChanged,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 enum SidebarType {
   base64,
@@ -22,16 +22,21 @@ List<SidebarItem> sidebarItems = [
     type: SidebarType.base64,
     title: 'Base64 String Encode/Decode',
     leading: const Icon(
-      Icons.code,
+      CupertinoIcons.arrow_2_squarepath,
       size: 16,
     ),
   ),
   SidebarItem(
     type: SidebarType.jwt,
     title: 'JWT Debugger',
-    leading: const Icon(
-      Icons.code,
-      size: 16,
+    leading: const SizedBox(
+      width: 16,
+      height: 16,
+      child: Text(
+        '*',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 28, height: 1),
+      ),
     ),
   ),
 ];

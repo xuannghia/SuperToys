@@ -9,13 +9,14 @@ ThemeData lightTheme = ThemeData(
   backgroundColor: Colors.grey.shade50,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
-        elevation: 0,
-        shadowColor: Colors.transparent,
-        splashFactory: NoSplash.splashFactory,
-        shape: RoundedRectangleBorder(
-          side: BorderSide(color: CustomColors.sky.shade600, width: 0.5),
-          borderRadius: BorderRadius.circular(4),
-        )),
+      elevation: 0,
+      shadowColor: Colors.transparent,
+      splashFactory: NoSplash.splashFactory,
+      shape: RoundedRectangleBorder(
+        side: BorderSide(color: CustomColors.sky.shade600, width: 0.5),
+        borderRadius: BorderRadius.circular(4),
+      ),
+    ),
   ),
   textButtonTheme: TextButtonThemeData(
     style: TextButton.styleFrom(
@@ -35,8 +36,8 @@ ThemeData lightTheme = ThemeData(
   inputDecorationTheme: InputDecorationTheme(
     border: const OutlineInputBorder(),
     contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-    focusedBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.blueAccent, width: 2)),
+    focusedBorder: OutlineInputBorder(
+        borderSide: BorderSide(color: CustomColors.sky.shade500, width: 2)),
     enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey.shade300, width: 1)),
     errorBorder: const OutlineInputBorder(

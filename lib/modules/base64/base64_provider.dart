@@ -6,32 +6,45 @@ class Base64State {
   final String input;
   final String output;
   final bool isEncoding;
-  Base64State(this.input, this.output, this.isEncoding);
+  final bool isError;
+  Base64State(this.input, this.output, this.isEncoding, this.isError);
 
-  Base64State copyWith({String? input, String? output, bool? isEncoding}) {
+  Base64State copyWith({
+    String? input,
+    String? output,
+    bool? isEncoding,
+    bool? isError,
+  }) {
     return Base64State(
       input ?? this.input,
       output ?? this.output,
       isEncoding ?? this.isEncoding,
+      isError ?? this.isError,
     );
   }
 }
 
 class Base64StateNotifier extends StateNotifier<Base64State> {
-  Base64StateNotifier() : super(Base64State('', '', true));
+  Base64StateNotifier() : super(Base64State('', '', true, false));
 
   setInput(String value) {
-    state = state.copyWith(input: value);
+    state = state.copyWith(input: value, isError: false);
     calcOutput();
   }
 
   setOutput(String value) {
-    state = state.copyWith(output: value);
+    state = state.copyWith(output: value, isError: false);
   }
 
   calcOutput() {
-    String result = base64Encode(utf8.encode(state.input));
-    setOutput(result);
+    try {
+      String result = state.isEncoding
+          ? base64.encode(utf8.encode(state.input))
+          : utf8.decode(base64.decode(state.input));
+      setOutput(result);
+    } catch (e) {
+      state = state.copyWith(isError: true);
+    }
   }
 
   setIsEncoding(bool value) {

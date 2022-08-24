@@ -6,8 +6,16 @@ class Textarea extends HookWidget {
   final TextEditingController controller;
   final Function(String)? onChanged;
   final bool? readOnly;
-  const Textarea(
-      {super.key, required this.controller, this.onChanged, this.readOnly});
+  final TextStyle? textStyle;
+  final InputDecoration? decoration;
+  const Textarea({
+    super.key,
+    required this.controller,
+    this.onChanged,
+    this.readOnly,
+    this.textStyle,
+    this.decoration = const InputDecoration(),
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +28,8 @@ class Textarea extends HookWidget {
       minLines: null,
       maxLines: null,
       expands: true,
+      style: textStyle,
+      decoration: decoration,
     );
   }
 }

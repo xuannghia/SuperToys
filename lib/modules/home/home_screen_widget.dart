@@ -5,7 +5,7 @@ import 'package:super_toys/modules/app/app_preferences_provider.dart';
 import 'package:super_toys/modules/base64/base64_screen_widget.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 import 'package:super_toys/modules/home/sidebar_widget.dart';
-import 'package:super_toys/widgets/custom_switch.dart';
+import 'package:super_toys/widgets/small_switch.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
