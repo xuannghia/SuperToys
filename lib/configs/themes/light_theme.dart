@@ -40,10 +40,9 @@ ThemeData lightTheme = ThemeData(
         borderSide: BorderSide(color: CustomColors.sky.shade500, width: 2)),
     enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey.shade300, width: 1)),
-    errorBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.redAccent, width: 1)),
     filled: true,
     fillColor: Colors.grey.shade100,
   ),
   radioTheme: const RadioThemeData(splashRadius: 0),
+  errorColor: Colors.redAccent,
 );

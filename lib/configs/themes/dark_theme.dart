@@ -33,8 +33,6 @@ ThemeData darkTheme = ThemeData(
         borderSide: BorderSide(color: CustomColors.sky.shade500, width: 2)),
     enabledBorder: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.grey.shade800, width: 1)),
-    errorBorder: const OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.redAccent, width: 1)),
     filled: true,
     fillColor: Colors.black12,
   ),
@@ -43,4 +41,5 @@ ThemeData darkTheme = ThemeData(
     fillColor: MaterialStateProperty.resolveWith(
         (states) => CustomColors.sky.shade600),
   ),
+  errorColor: Colors.redAccent.shade200,
 );
