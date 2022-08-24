@@ -7,6 +7,7 @@ ThemeData lightTheme = ThemeData(
   splashFactory: NoSplash.splashFactory,
   scaffoldBackgroundColor: Colors.white,
   backgroundColor: Colors.grey.shade50,
+  errorColor: Colors.redAccent,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
@@ -44,5 +45,10 @@ ThemeData lightTheme = ThemeData(
     fillColor: Colors.grey.shade100,
   ),
   radioTheme: const RadioThemeData(splashRadius: 0),
-  errorColor: Colors.redAccent,
+  popupMenuTheme: PopupMenuThemeData(
+    color: Colors.red,
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(4),
+    ),
+  ),
 );

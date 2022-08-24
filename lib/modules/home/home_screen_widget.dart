@@ -51,29 +51,54 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                   ),
                 ),
                 Container(
-                  alignment: Alignment.centerLeft,
-                  child: DropdownButton(
-                    value: themeMode,
-                    items: const [
-                      DropdownMenuItem(
-                        value: ThemeMode.system,
-                        child: Text('System'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.light,
-                        child: Text('Light'),
-                      ),
-                      DropdownMenuItem(
-                        value: ThemeMode.dark,
-                        child: Text('Dark'),
-                      ),
-                    ],
-                    onChanged: (ThemeMode? mode) {
-                      if (mode != null) {
-                        ref.read(appPreferencesProvider).setThemeMode(mode);
-                      }
-                    },
-                  ),
+                  height: 52,
+                  padding: const EdgeInsets.all(8),
+                  child: ButtonTheme(
+                      alignedDropdown: true,
+                      child: DropdownButtonFormField(
+                        value: themeMode,
+                        borderRadius: BorderRadius.circular(4),
+                        icon: const Icon(
+                          Icons.keyboard_arrow_down,
+                          size: 18,
+                        ),
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                            color:
+                                Theme.of(context).textTheme.bodyLarge?.color),
+                        decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).dividerColor),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: BorderSide(
+                                color: Theme.of(context).dividerColor),
+                          ),
+                        ),
+                        items: const [
+                          DropdownMenuItem(
+                            value: ThemeMode.system,
+                            child: Text('System'),
+                          ),
+                          DropdownMenuItem(
+                            value: ThemeMode.light,
+                            child: Text('Light'),
+                          ),
+                          DropdownMenuItem(
+                            value: ThemeMode.dark,
+                            child: Text('Dark'),
+                          ),
+                        ],
+                        onChanged: (ThemeMode? mode) {
+                          if (mode != null) {
+                            ref.read(appPreferencesProvider).setThemeMode(mode);
+                          }
+                        },
+                      )),
                 ),
               ],
             ),

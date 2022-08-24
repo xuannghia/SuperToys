@@ -7,6 +7,7 @@ ThemeData darkTheme = ThemeData(
   primarySwatch: CustomColors.sky,
   backgroundColor: Colors.black12,
   splashFactory: NoSplash.splashFactory,
+  errorColor: Colors.redAccent.shade200,
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ElevatedButton.styleFrom(
       elevation: 0,
@@ -41,5 +42,4 @@ ThemeData darkTheme = ThemeData(
     fillColor: MaterialStateProperty.resolveWith(
         (states) => CustomColors.sky.shade600),
   ),
-  errorColor: Colors.redAccent.shade200,
 );
