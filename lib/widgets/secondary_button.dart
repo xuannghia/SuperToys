@@ -30,13 +30,13 @@ class SecondaryButton extends ConsumerWidget {
         onPrimary: Theme.of(context).textTheme.bodyLarge?.color,
       ),
       onPressed: onPressed,
-      child: Wrap(
-        alignment: WrapAlignment.start,
-        crossAxisAlignment: WrapCrossAlignment.center,
-        spacing: spacing ?? 4,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           if (leading != null) leading!,
+          if (leading != null) const SizedBox(width: 4),
           child,
+          if (trailing != null) const SizedBox(width: 4),
           if (trailing != null) trailing!,
         ],
       ),

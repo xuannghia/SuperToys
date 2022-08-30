@@ -1,11 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:super_toys/modules/app/app_preferences_provider.dart';
 import 'package:super_toys/modules/base64/base64_screen_widget.dart';
 import 'package:super_toys/modules/home/sidebar_items.dart';
 import 'package:super_toys/modules/home/sidebar_widget.dart';
-import 'package:super_toys/widgets/small_switch.dart';
+import 'package:super_toys/widgets/dropdown.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -50,55 +49,27 @@ class HomeScreenState extends ConsumerState<HomeScreen> {
                     onTap: _onTap,
                   ),
                 ),
-                Container(
-                  height: 52,
-                  padding: const EdgeInsets.all(8),
-                  child: ButtonTheme(
-                      alignedDropdown: true,
-                      child: DropdownButtonFormField(
-                        value: themeMode,
-                        borderRadius: BorderRadius.circular(4),
-                        icon: const Icon(
-                          Icons.keyboard_arrow_down,
-                          size: 18,
-                        ),
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                            color:
-                                Theme.of(context).textTheme.bodyLarge?.color),
-                        decoration: InputDecoration(
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).dividerColor),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: BorderSide(
-                                color: Theme.of(context).dividerColor),
-                          ),
-                        ),
-                        items: const [
-                          DropdownMenuItem(
-                            value: ThemeMode.system,
-                            child: Text('System'),
-                          ),
-                          DropdownMenuItem(
-                            value: ThemeMode.light,
-                            child: Text('Light'),
-                          ),
-                          DropdownMenuItem(
-                            value: ThemeMode.dark,
-                            child: Text('Dark'),
-                          ),
-                        ],
-                        onChanged: (ThemeMode? mode) {
-                          if (mode != null) {
-                            ref.read(appPreferencesProvider).setThemeMode(mode);
-                          }
-                        },
-                      )),
+                Dropdown(
+                  value: themeMode,
+                  items: [
+                    DropdownItem(
+                      value: ThemeMode.system,
+                      child: const Text('System'),
+                    ),
+                    DropdownItem(
+                      value: ThemeMode.light,
+                      child: const Text('Light'),
+                    ),
+                    DropdownItem(
+                      value: ThemeMode.dark,
+                      child: const Text('Dark'),
+                    ),
+                  ],
+                  onChanged: (mode) {
+                    if (mode != null) {
+                      ref.read(appPreferencesProvider).setThemeMode(mode);
+                    }
+                  },
                 ),
               ],
             ),
